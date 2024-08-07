@@ -1,5 +1,9 @@
+from App import App
+
 def main():
-    print("hola")
-    print()
-    
-main()
+    app=App()
+    app.start()
+
+if __name__=='__main__':
+    main()
+
