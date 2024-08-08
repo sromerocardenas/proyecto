@@ -8,7 +8,7 @@ class Especie:
         self.characters=characters
         self.eps=eps
         
-
+#Este metodo muestra los atributos de una especie
     def show(self):
         print()
         print("----------------------------------------------------")
@@ -16,6 +16,7 @@ class Especie:
         print(f'Altura promedio: {self.height}')
         print(f'Clasificacion: {self.clas}')
         print(f'Planet: {self.planet}')
+        print(f'Lengua: {self.language}')
         print('Personajes de esta especie: ')
         for character in self.characters:
             print(f'-{character}')

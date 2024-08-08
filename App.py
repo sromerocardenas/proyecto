@@ -31,9 +31,36 @@ class App:
                     i:Especie
                     i.show()
             elif menu==3:
-                print()
+                ver=cargar_planetas()
+                for i in ver:
+                    i:Planeta
+                    i.show()
             elif menu==4:
-                print()
+                ver=cargar_peronajes()
+                while True:
+                    menuperso=int(input('''Ingrese una opcion:
+                                        1. Buscar personajes (a partir de primeras letras del nombre):
+                                        2. Salir
+                                        ---> '''))
+                    if menuperso==1:
+                        busq=input('Ingrese nombre o parte de el (todo en minusculas): ')
+                        contador=0
+                        for i in ver:
+                            i:Personaje
+                            minus=str(i.name)
+                            minus2=minus.lower()
+                            if busq in minus2:
+                                i.show()
+                                contador+=1
+                            if contador<1:
+                                print('No se encontraron personajes con ese nombre')
+                            print(f'-----------{contador} personaje(s) encontrados---------')
+                    elif menuperso==2:
+                        break
+                    else:
+                        print('Ingrese una opcion valida !!')
+                        print()
+                    
             elif menu==5:
                 print()
             elif menu==6:
@@ -43,5 +70,10 @@ class App:
             elif menu==8:
                 print()
             elif menu==9:
+                print("Que la fuerza te acompane...")
                 break
+            elif menu==None:
+                print('INGRESE UNA OPCION VALIDA')
+            else:
+                print('INGRESE UNA OPCION VALIDA')
 

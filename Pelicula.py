@@ -5,7 +5,7 @@ class Pelicula:
         self.date=date
         self.o_crawl=o_crawl
         self.director=director
-
+#Este metodo muestra los atributos de una pelicula
     def show(self):
         print()
         print("----------------------------------------------------")
