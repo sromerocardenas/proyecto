@@ -21,7 +21,9 @@ def cargar_peliculas():
 
 #Este metodo carga las especies a partir de la api y las devuelve en forma de lista de objetos tipo Especie
 #En general la estructura de cargar_especies, planetas y personajes utiliza un while true para ir pasando las paginas pues la api por defecto solo muestra la primera pagina
-#NOTA: Duran un poco en cargar los datos, en especial cargar_personajes
+#NOTA: Duran un poco en cargar los datos, en especial cargar_personajes, pues para especies debe revisar 37 elementos, planetas revisa 60 y personajes revisa hasta 82.
+#Teniendo en cuenta que por cada elemento se hacen una serie de iteraciones, el programa debe pensar un poco para cargar todos los datos
+
 def cargar_especies():
     species=[]
     link='https://swapi.dev/api/species'

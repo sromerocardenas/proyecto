@@ -4,9 +4,13 @@ import matplotlib.pyplot as plt
 class App:
 
 #Este es el menu del programa, llama a funciones de otros archivos segun la opcion que escojamos. Para las primeras 3 opciones realiza la carga de los datos y luego los imprime de manera ordenada segun su metodo 
+#Se recomienda pedir las primeras 4 opciones para que el programa las cargue al comienzo (una vez se cargan no vuelve a hacer request al API, quedan los datos guardados en la lista)
     def start(self):
         print("Bienvenido a Star Wars Metropedia")
-
+        filmcarga=None
+        speccarga=None
+        planetcarga=None
+        peoplecarga=None
         while True:
             print()
             menu=int(input('''
@@ -23,23 +27,31 @@ class App:
     
     ---> '''))
             if menu==1:
-                ver=cargar_peliculas()
-                for i in ver:
+                if not filmcarga:
+                    filmsmain=cargar_peliculas()
+                    filmcarga=True
+                for i in filmsmain:
                     i:Pelicula
                     i.show()
             elif menu==2:
-                ver=cargar_especies()
-                for i in ver:
+                if not speccarga:
+                    specmain=cargar_especies()
+                    speccarga=True
+                for i in specmain:
                     i:Especie
                     i.show()
             elif menu==3:
-                ver=cargar_planetas()
-                for i in ver:
+                if not planetcarga:
+                    planetsmain=cargar_planetas()
+                    planetcarga=True
+                for i in planetsmain:
                     i:Planeta
                     i.show()
             #La cuarta opcion tambien carga los datos, pero en vez de imprimirlos solicita al usuario el nombre del personaje que desea buscar y procede a imprimir los resultados que contengan el input del usuario
             elif menu==4:
-                ver=cargar_peronajes()
+                if not peoplecarga:
+                    peoplemain=cargar_peronajes()
+                    peoplecarga=True
                 while True:
                     menuperso=int(input('''Ingrese una opcion:
                                         1. Buscar personajes (a partir de primeras letras del nombre):
