@@ -67,7 +67,7 @@ class App:
                     if menuperso==1:
                         busq=input('Ingrese nombre o parte de el (todo en minusculas): ')
                         contador=0
-                        for i in ver:
+                        for i in peoplemain:
                             i:Personaje
                             minus=str(i.name)
                             minus2=minus.lower()
