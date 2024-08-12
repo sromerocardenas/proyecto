@@ -122,9 +122,8 @@ def crear_mision():
     print('Mision creada con EXITO')
 
     return mision
-
-    
-
-
+#Este metodo es utilizado para convertir un diccionario en un objeto de tipo mision
+def dic_a_mision(dic):
+    return Mision(dic['nombre'],dic['planeta'],dic['nave'],dic['armas'],dic['gente'])
 
 

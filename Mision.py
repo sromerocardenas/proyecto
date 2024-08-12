@@ -64,6 +64,14 @@ class Mision:
         newname=input('Ingrese el nuevo nombre: ')
         self.nombre=newname
         print(f'El nuevo nombre es: {self.nombre}')
-    
+    #Este metodo convierte un objeto de tipo mision en un diccionario, con el objetivo de guardarse posteriormente en un archivo txt
+    def diccionario(self):
+        return {
+            "nombre":self.nombre,
+            "planeta":self.planeta,
+            "nave":self.nave,
+            "armas":self.armas,
+            "gente":self.gente
+        }
 
     

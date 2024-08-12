@@ -2,6 +2,7 @@ from API import *
 from Graficos import naves, personajes_por_planeta, tabla_naves
 import matplotlib.pyplot as plt
 from misiones import *
+import json
 class App:
 
 #Este es el menu del programa, llama a funciones de otros archivos segun la opcion que escojamos. Para las primeras 3 opciones realiza la carga de los datos y luego los imprime de manera ordenada segun su metodo 
@@ -129,12 +130,13 @@ class App:
                 #Esta opcion abre el submenu misiones, que tiene varias opciones en torno a ellas.
                 print()
                 while True: 
+                    print()
                     misionmenu=int(input('''Por favor ingrese una opcion:
                                          1. Crear mision
                                          2. Modificar mision
                                          3. Ver misiones
-                                         4. Guardar misiones
-                                         5. Cargar misiones
+                                         4. Guardar misiones (guarda la lista actual de misiones)
+                                         5. Cargar misiones (carga las misiones que se encuentren contenidas en misiones.txt)
                                          6. Volver al menu principal
                                          ----> '''))
                     #En primer lugar, se llama al metodo crear_mision y agrega una nueva mision a la lista, si ya se ha alcanzado el maximo de 5 misiones, no permite agregar nuevas
@@ -233,9 +235,30 @@ class App:
                             mis:Mision
                             mis.showmis()
                     elif misionmenu==4:
-                        print('Guardar misiones')
+                        #En primer lugar se crea una lista de misiones en forma de diccionario, con el metodo .diccionario(), alli se agregan cada una de las misiones creadas por el usuario
+                        misionesdic=[]
+                        print()
+                        for mis in missions:
+                            mis:Mision
+                            misionesdic.append(mis.diccionario())
+                     #Ahora utilizando el metodo .dumps de la libreria json, se guardan en un archivo de texto con formato json de manera que sea agradable la lectura, esto es gracias al parametro indent=4, que la hace mas agradable visualmente
+                        misionestxt=json.dumps(misionesdic, indent=4)
+                        guardado=open('misiones.txt', 'w')
+                        guardado.write(misionestxt)
+                        guardado.close()
+                        print('Sus misiones han sido guardadas con exito')
                     elif misionmenu==5:
-                        print('Cargar misiones')
+                        #Nuevamente usando la libreria json, convertimos el archivo de texto en una lista de diccionarios que posteriormente se convertiran a misiones con el metodo dic_a_mision
+                        #De esta manera podemos agregar las misiones contenidas en el txt a nuestra lista de misiones principal
+                        print()
+                        misionesob=[]
+                        datosmis=open('misiones.txt', 'r')
+                        misionescarga=json.load(datosmis)
+                        for mis in misionescarga:
+                            misionesob.append(dic_a_mision(mis))
+                        datosmis.close()
+                        missions+=misionesob
+                        print('Las misiones de misiones.txt han sido cargadas con exito')
                     elif misionmenu==6:
                         break
                     else:
